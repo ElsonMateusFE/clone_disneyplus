@@ -23,6 +23,12 @@ function stylesRevisao(){
         .pipe(gulp.dest('revisao'))
 }
 
+function disneyPlus(){
+    return gulp.src('disney_plus/*.scss')
+        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(gulp.dest('disney_plus'))
+}
+
 function images(){
     return gulp.src('src/images/**/*')
         .pipe(imagemin())
@@ -35,11 +41,14 @@ function images(){
 }
 */
 
-exports.default = gulp.parallel(styles, images, stylesRevisao, scripts)
+exports.default = gulp.parallel(styles, images, stylesRevisao, disneyPlus,scripts)
 
 exports.watch = function(){
     gulp.watch('src/styles/*.scss', {ignoreInitial: false}, gulp.series(styles))
+
     gulp.watch('src/scripts/*.js', {ignoreInitial: false}, gulp.series(scripts))
 
     gulp.watch('revisao/*.scss', {ignoreInitial: false}, gulp.series(stylesRevisao))
+
+    gulp.watch('disney_plus/*.scss', {ignoreInitial: false}, gulp.series(disneyPlus))
 }
