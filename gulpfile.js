@@ -41,7 +41,7 @@ function images(){
 }
 */
 
-exports.default = gulp.parallel(styles, images, stylesRevisao, disneyPlus,scripts)
+exports.default = gulp.parallel(styles, images, stylesRevisao, disneyPlus, scripts)
 
 exports.watch = function(){
     gulp.watch('src/styles/*.scss', {ignoreInitial: false}, gulp.series(styles))
